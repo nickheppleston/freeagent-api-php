@@ -1,7 +1,7 @@
 freeagent-api-php
 =================
 
-This is an *unofficial* FreeAgent PHP Client Library provides a simple PHP interface for the FreeAgent API 2.0.
+This is an *unofficial* FreeAgent PHP Client Library provides a simple PHP interface for the FreeAgent API 2.0 (https://dev.freeagent.com/docs).
 
 The API currently supports the following functionality of the FreeAgent API v2:
 
