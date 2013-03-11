@@ -5,7 +5,9 @@
     // TODO:    Consider using HTTP Response Code listed in API documentation to determine whether
     //          the response is correct.
 
-    define('API_URL', 'https://api.sandbox.freeagent.com/v2');
+    if (!defined('API_URL'))
+        define('API_URL', 'https://api.sandbox.freeagent.com/v2');
+
 
     class FreeAgentApiProjects extends FreeAgentApiBase
     {
