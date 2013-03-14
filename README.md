@@ -1,5 +1,5 @@
-freeagent-api-php
-=================
+freeagent-api-php - v0.1
+========================
 
 This is an *unofficial* FreeAgent PHP Client Library provides a simple PHP interface for the FreeAgent API 2.0 (https://dev.freeagent.com/docs).
 
@@ -10,4 +10,6 @@ The API currently supports the following functionality of the FreeAgent API v2:
 3. Projects
 
 
-A FreeAgent API OAuth Access Token is required to use this API. For more information, see https://dev.freeagent.com/docs/oauth/.
+Basic OAuth support is provided, however this API assumes you have already exchanges tokens and have a 'Refresh Token'. For more information, see https://dev.freeagent.com/docs/oauth/.
+
+
