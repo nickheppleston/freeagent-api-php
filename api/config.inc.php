@@ -9,4 +9,10 @@
 $cfg['api_url'] = 'https://api.sandbox.freeagent.com/v2'; /* FOR __DEVELOPMENT__ PURPOSES ONLY */
 // $cfg['api_url'] = 'https://api.freeagent.com/v2'; /* FOR __PRODUCTION__ PURPOSES ONLY */
 
+
+/*
+ * The User Agent string to be passed to the FreeAgent API
+ */
+$cfg['user_agent'] = 'FreeAgent PHP API v0.1 (https://github.com/nickheppleston/freeagent-api-php)';
+
 ?>

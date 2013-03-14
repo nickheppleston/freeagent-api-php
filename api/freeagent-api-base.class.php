@@ -77,7 +77,7 @@
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($this->ch, CURLOPT_URL, $request['url']);
             curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $request['method']);
-            curl_setopt($this->ch, CURLOPT_USERAGENT, 'PHP Script');
+            curl_setopt($this->ch, CURLOPT_USERAGENT, $GLOBALS['cfg']['user_agent']);
             
             // Configure request body for normal API request or OAuth request
             if ((isset($request['oauth'])) && ($request['oauth'] == true)) 
