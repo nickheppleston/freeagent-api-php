@@ -1,12 +1,9 @@
 <?php
 
-    // TODO:    Consider moving API_URL constant to base class and use a defaulted 'test' flag on 
-    //          constructor to determine actual value.
     // TODO:    Consider using HTTP Response Code listed in API documentation to determine whether
     //          the response is correct.
 
-    if (!defined('API_URL'))
-        define('API_URL', 'https://api.sandbox.freeagent.com/v2');
+    include_once('config.inc.php');
 
     class FreeAgentApiContacts extends FreeAgentApiBase
     {
@@ -15,7 +12,7 @@
         // GET https://api.freeagent.com/v2/contacts
         public function get_contacts()
         {
-            $request['url'] = API_URL. '/contacts';
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/contacts';
             $request['body'] = '';
             $request['method'] = 'GET';
             $request['type'] = 'application/json';
@@ -26,7 +23,7 @@
         // GET https://api.freeagent.com/v2/contacts/:id
         public function get_contact($contact_id)
         {
-            $request['url'] = API_URL. '/contacts/'. $contact_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/contacts/'. $contact_id;
             $request['body'] = '';
             $request['method'] = 'GET';
             $request['type'] = 'application/json';
@@ -38,7 +35,7 @@
         // POST https://api.freeagent.com/v2/contacts
         public function create_contact($json_request_data)
         {
-            $request['url'] = API_URL. '/contacts';
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/contacts';
             $request['body'] = $json_request_data;
             $request['method'] = 'POST';
             $request['type'] = 'application/json';
@@ -60,7 +57,7 @@
         // PUT https://api.freeagent.com/v2/contacts/:id
         public function update_contact($json_request_data, $contact_id)
         {
-            $request['url'] = API_URL. '/contacts/'. $contact_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/contacts/'. $contact_id;
             $request['body'] = $json_request_data;
             $request['method'] = 'PUT';
             $request['type'] = 'application/json';
@@ -71,7 +68,7 @@
         // DELETE https://api.freeagent.com/v2/contacts/:id
         public function delete_contact($contact_id)
         {
-            $request['url'] = API_URL. '/contacts/'. $contact_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/contacts/'. $contact_id;
             $request['body'] = '';
             $request['method'] = 'DELETE';
             $request['type'] = 'application/json';

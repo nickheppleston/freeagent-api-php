@@ -1,20 +1,16 @@
 <?php
 
-    // TODO:    Consider moving API_URL constant to base class and use a defaulted 'test' flag on 
-    //          constructor to determine actual value.
     // TODO:    Consider using HTTP Response Code listed in API documentation to determine whether
     //          the response is correct.
 
-    if (!defined('API_URL'))
-        define('API_URL', 'https://api.sandbox.freeagent.com/v2');
-
+    include_once('config.inc.php');
 
     class FreeAgentApiProjects extends FreeAgentApiBase
     {
         // GET https://api.freeagent.com/v2/projects
         public function get_projects()
         {
-            $request['url'] = API_URL. '/projects';
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/projects';
             $request['body'] = '';
             $request['method'] = 'GET';
             $request['type'] = 'application/json';
@@ -25,7 +21,7 @@
         // GET https://api.freeagent.com/v2/projects/:id
         public function get_project($project_id)
         {
-            $request['url'] = API_URL. '/projects/'. $project_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/projects/'. $project_id;
             $request['body'] = '';
             $request['method'] = 'GET';
             $request['type'] = 'application/json';
@@ -36,7 +32,7 @@
         // POST https://api.freeagent.com/v2/projects
         public function create_project($json_request_data)
         {
-            $request['url'] = API_URL. '/projects/';
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/projects/';
             $request['body'] = $json_request_data;
             $request['method'] = 'POST';
             $request['type'] = 'application/json';
@@ -58,7 +54,7 @@
         // PUT https://api.freeagent.com/v2/projects/:id
         public function update_project($json_request_data, $project_id)
         {
-            $request['url'] = API_URL. '/projects/'. $project_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/projects/'. $project_id;
             $request['body'] = $json_request_data;
             $request['method'] = 'PUT';
             $request['type'] = 'application/json';
@@ -69,7 +65,7 @@
         // DELETE https://api.freeagent.com/v2/projects/:id
         public function delete_project($project_id)
         {
-            $request['url'] = API_URL. '/projects/'. $project_id;
+            $request['url'] = $GLOBALS['cfg']['api_url'] .'/projects/'. $project_id;
             $request['body'] = '';
             $request['method'] = 'DELETE';
             $request['type'] = 'application/json';

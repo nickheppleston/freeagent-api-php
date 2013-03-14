@@ -1,5 +1,8 @@
 <?php
 
+    /*
+     * This is the FreeAgent API Base Class. Do not instanciate this class directly.
+     */ 
     abstract class FreeAgentApiBase
     {
         private $debug;
