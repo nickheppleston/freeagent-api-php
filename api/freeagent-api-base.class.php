@@ -69,21 +69,36 @@
 
         protected function invoke_api($request)
         {
-            // Setup API request
-            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($this->ch, CURLOPT_URL, $request['url']);
-            curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $request['method']);
-            curl_setopt($this->ch, CURLOPT_USERAGENT, 'PHP Script');
-            curl_setopt($this->ch, CURLOPT_HTTPHEADER, array(
-                "Authorization: Bearer ". $this->oauth_access_token,
-                "Accept: ". $request['type'],
-                "Content-type: ". $request['type'],
-                //"Content-length:". strlen($request['body']),
-            ));
+            // Setup CUrl
             curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, 0);
             curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, 0);   
             curl_setopt($this->ch, CURLOPT_HEADER, 1);           
             curl_setopt($this->ch, CURLOPT_VERBOSE, 1);
+            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($this->ch, CURLOPT_URL, $request['url']);
+            curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $request['method']);
+            curl_setopt($this->ch, CURLOPT_USERAGENT, 'PHP Script');
+            
+            // Configure request body for normal API request or OAuth request
+            if ((isset($request['oauth'])) && ($request['oauth'] == true)) 
+            {
+                // OAuth API request
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Accept: '. $request['type'],
+                    'Content-type: application/x-www-form-urlencoded',
+                    'Content-length:'. strlen($request['body']),
+                ));
+            } 
+            else 
+            {
+                // 'Normal' API request
+                curl_setopt($this->ch, CURLOPT_HTTPHEADER, array(
+                    "Authorization: Bearer ". $this->oauth_access_token,
+                    "Accept: ". $request['type'],
+                    "Content-type: ". $request['type'],
+                    //"Content-length:". strlen($request['body']),
+                ));
+            }
             
             $this->print_debug('Request Data *Body*: '. $request['body']);
 
