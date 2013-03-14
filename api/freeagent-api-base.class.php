@@ -83,7 +83,7 @@
             if ((isset($request['oauth'])) && ($request['oauth'] == true)) 
             {
                 // OAuth API request
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                curl_setopt($this->ch, CURLOPT_HTTPHEADER, array(
                     'Accept: '. $request['type'],
                     'Content-type: application/x-www-form-urlencoded',
                     'Content-length:'. strlen($request['body']),
@@ -129,7 +129,7 @@
             if (isset($error_arr['errors']))
             {
                 $this->error['error_source'] = "FreeAgentAPI";
-                $this->error['error_message'] = $error_arr['errors'][0]['message'];
+                $this->error['error_message'] = $error_arr['errors']['error']['message'];
                 return false;
             }
 
